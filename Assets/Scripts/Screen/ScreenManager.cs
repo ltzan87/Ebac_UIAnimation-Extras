@@ -13,16 +13,13 @@ namespace Screen
 
         private ScreenBase _currentScreen;
 
+        public List<GameObject> objs;
 
         private void Start() {
-             ShowByType(startScreen);
+            objs.GetRandom();
+
+            ShowByType(startScreen);
             HideAll();
-        }
-
-
-        private void Scale(Transform t, float size = 1.2f)
-        {
-            t.localScale = Vector3.one * size;
         }
 
 
