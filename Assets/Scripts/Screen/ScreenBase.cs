@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 using DG.Tweening;
+using UnityEngine.UI;
 
 namespace Screen
 {
@@ -25,6 +26,8 @@ namespace Screen
 
         public List<Typper> listOfPhrases;
 
+        public Image uiBackground;
+
 
         private void Start() {
             if(startHided)
@@ -34,14 +37,14 @@ namespace Screen
         }
 
         [Button]
-        protected virtual void Show()
+        public virtual void Show()
         {
             ShowObjects();
             Debug.Log("Show");
         }
 
         [Button]
-        protected virtual void Hide()
+        public virtual void Hide()
         {
             HideObjects();
             Debug.Log("Hide");
@@ -50,6 +53,7 @@ namespace Screen
         private void HideObjects()
         {
             listOfObjects.ForEach(i => i.gameObject.SetActive(false));
+            uiBackground.enabled = false;
         }
         private void ShowObjects()
         {
@@ -62,10 +66,12 @@ namespace Screen
             }
 
             Invoke(nameof(StartType), delayBetweenObjects * listOfObjects.Count);
+            uiBackground.enabled = true;
         }
         private void ForceShowObjects()
         {
             listOfObjects.ForEach(i => i.gameObject.SetActive(true));
+            uiBackground.enabled = true;
         }
 
         private void StartType()
