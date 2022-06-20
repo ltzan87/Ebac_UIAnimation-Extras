@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
+    public GameObject carPrefab;
+
     public int speed = 30;
     public int gear = 5;
 
@@ -11,5 +13,11 @@ public class Car : MonoBehaviour
     public int TotalSpeed
     {
         get { return speed * gear; }
+    }
+
+    public void CreateCar()
+    {
+        var a = Instantiate(carPrefab);
+        a.transform.position = Vector3.zero;
     }
 }
