@@ -23,6 +23,8 @@ namespace Screen
         public float animationDuration = .3f;
         public float delayBetweenObjects = .05f;
 
+        public List<Typper> listOfPhrases;
+
 
         private void Start() {
             if(startHided)
@@ -58,10 +60,20 @@ namespace Screen
                 obj.gameObject.SetActive(true);
                 obj.DOScale(0, animationDuration).From().SetDelay(i * delayBetweenObjects);
             }
+
+            Invoke(nameof(StartType), delayBetweenObjects * listOfObjects.Count);
         }
         private void ForceShowObjects()
         {
             listOfObjects.ForEach(i => i.gameObject.SetActive(true));
+        }
+
+        private void StartType()
+        {
+            for(int i = 0; i < listOfPhrases.Count; i ++)
+            {
+                listOfPhrases[i].StartType();
+            }
         }
     }
 }
