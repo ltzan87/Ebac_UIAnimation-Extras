@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ebac.Core.Singleton;
+using DG.Tweening;
 
 namespace Screen
 {
@@ -14,9 +15,16 @@ namespace Screen
 
 
         private void Start() {
-            ShowByType(startScreen);
+             ShowByType(startScreen);
             HideAll();
         }
+
+
+        private void Scale(Transform t, float size = 1.2f)
+        {
+            t.localScale = Vector3.one * size;
+        }
+
 
         public void ShowByType(ScreenType type)
         {
