@@ -13,10 +13,10 @@ namespace Screen
 
         private ScreenBase _currentScreen;
 
-        public List<GameObject> objs;
+        //public List<GameObject> objs;
 
         private void Start() {
-            objs.GetRandom();
+            //objs.GetRandom();
 
             ShowByType(startScreen);
             HideAll();
